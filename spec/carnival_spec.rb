@@ -23,4 +23,15 @@ RSpec.describe Carnival do
       expect(jeffco_fair.rides).to eq([])
     end
   end
+
+  describe '#add_ride' do
+    it 'can add a ride' do
+      jeffco_fair = Carnival.new('Jefferson County Fair')
+      bumper_cars = Ride.new({name: 'Bumper Cars', cost: 10})
+
+      jeffco_fair.add_ride(bumper_cars)
+
+      expect(jeffco.rides).to eq([bumper_cars])
+    end
+  end
 end
