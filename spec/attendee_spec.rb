@@ -21,5 +21,11 @@ RSpec.describe Attendee do
 
       expect(attendee.spending_money).to eq(20)
     end
+
+    it 'has no interests by default' do
+      attendee = Attendee.new('Bob', 20)
+
+      expet(attendee.interests).to eq([])
+    end
   end
 end
