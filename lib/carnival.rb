@@ -44,5 +44,9 @@ class Carnival
     hash
   end
 
-
+  def ticket_lottery_contestants(ride)
+    @attendees.find_all do |attendee|
+      recommend_rides(attendee).include?(ride) && attendee.spending_money < ride.cost
+    end
+  end
 end
