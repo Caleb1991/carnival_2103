@@ -91,6 +91,10 @@ RSpec.describe Carnival do
       jeffco_fair.add_ride(bumper_cars)
       jeffco_fair.add_ride(ferris_wheel)
       jeffco_fair.add_ride(scrambler)
+      jeffco_fair.admit(bob)
+      jeffco_fair.admit(sally)
+      jeffco_fair.admit(lando)
+      jeffco_fair.admit(luke)
       bob.add_interest('Ferris Wheel')
       bob.add_interest('Bumper Cars')
       sally.add_interest('Bumper Cars')
@@ -107,7 +111,7 @@ RSpec.describe Carnival do
     end
   end
 
-  describe '#ticket_lottery_contestant' do
+  describe '#ticket_lottery_contestants' do
     it 'returns array of interestd attendees that do not have enough spending money' do
       jeffco_fair = Carnival.new('Jefferson County Fair')
       bumper_cars = Ride.new({name: 'Bumper Cars', cost: 10})
@@ -121,6 +125,10 @@ RSpec.describe Carnival do
       jeffco_fair.add_ride(bumper_cars)
       jeffco_fair.add_ride(ferris_wheel)
       jeffco_fair.add_ride(scrambler)
+      jeffco_fair.admit(bob)
+      jeffco_fair.admit(sally)
+      jeffco_fair.admit(lando)
+      jeffco_fair.admit(luke)
       bob.add_interest('Ferris Wheel')
       bob.add_interest('Bumper Cars')
       sally.add_interest('Bumper Cars')
