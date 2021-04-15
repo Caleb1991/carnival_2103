@@ -197,7 +197,7 @@ RSpec.describe Carnival do
       lando.add_interest('Bumper Cars')
       luke.add_interest('Scrambler')
 
-      expect(jeffco_fair.announce_lottery_winner(scrambler)).to eq('Luke won the lightsaber')
+      expect(jeffco_fair.announce_lottery_winner(scrambler)).to eq('Luke won the Scrambler ride')
       expect(jeffco_fair.announce_lottery_winner(roller_coaster)).to eq('No winners for this lottery')
     end
   end
