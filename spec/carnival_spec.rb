@@ -31,7 +31,7 @@ RSpec.describe Carnival do
 
       jeffco_fair.add_ride(bumper_cars)
 
-      expect(jeffco.rides).to eq([bumper_cars])
+      expect(jeffco_fair.rides).to eq([bumper_cars])
     end
   end
 end
