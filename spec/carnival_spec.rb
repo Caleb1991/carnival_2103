@@ -76,4 +76,34 @@ RSpec.describe Carnival do
       expect(jeffco_fair.attendees).to eq([bob, sally, lando, luke])
     end
   end
+
+  describe '#attendees_by_ride_interest' do
+    it 'returns a hash with attendees interested in certain rides' do
+      jeffco_fair = Carnival.new('Jefferson County Fair')
+      bumper_cars = Ride.new({name: 'Bumper Cars', cost: 10})
+      ferris_wheel = Ride.new({name: 'Ferris Wheel', cost: 0})
+      scrambler = Ride.new({name: 'Scrambler', cost: 15})
+      bob = Attendee.new('Bob', 0)
+      sally = Attendee.new('Sally', 20)
+      lando = Attendee.new('Lando', 5)
+      luke = Attendee.new('Luke', 10)
+
+      jeffco_fair.add_ride(bumper_cars)
+      jeffco_fair.add_ride(ferris_wheel)
+      jeffco_fair.add_ride(scrambler)
+      bob.add_interest('Ferris Wheel')
+      bob.add_interest('Bumper Cars')
+      sally.add_interest('Bumper Cars')
+      lando.add_interest('Scrambler')
+      luke.add_interest('Scrambler')
+
+      expected = {
+        bumper_cars => [bob, sally],
+        ferris_wheel => [bob],
+        scrambler => [lando, luke]
+      }
+
+      expect(jeffco_fair.attendees_by_ride_interest).to eq(expected)
+    end
+  end
 end
