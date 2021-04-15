@@ -22,6 +22,12 @@ RSpec.describe Carnival do
 
       expect(jeffco_fair.rides).to eq([])
     end
+
+    it 'has no attendees by default' do
+      jeffco_fair = Carnival.new('Jeffco County Fair')
+
+      expect(jeffco_fair.attendees).to eq([])
+    end
   end
 
   describe '#add_ride' do
@@ -51,6 +57,23 @@ RSpec.describe Carnival do
       bob.add_interest('Bumper Cars')
 
       expect(jeffco_fair.recommend_rides(bob)).to eq([ferris_wheel, bumper_cars])
+    end
+  end
+
+  describe '#admit' do
+    it 'can track attendees' do
+      jeffco_fair = Carnival.new('Jefferson County Fair')
+      bob = Attendee.new('Bob', 0)
+      sally = Attendee.new('Sally', 20)
+      lando = Attendee.new('Lando', 5)
+      luke = Attendee.new('Luke', 10)
+
+      jeffco_fair.admit(bob)
+      jeffco_fair.admit(sally)
+      jeffco_fair.admit(lando)
+      jeffco_fair.admit(luke)
+
+      expect(jeffco_fair.attendees).to eq([bob, sally, lando, luke])
     end
   end
 end
