@@ -52,6 +52,18 @@ class Carnival
 
   def draw_lottery_winner(ride)
     winner = ticket_lottery_contestants(ride).sample
-    winner.name
+    if winner != nil
+      winner.name
+    end
+  end
+
+  def announce_lottery_winner(ride)
+    winner = draw_lottery_winner(ride)
+
+    if winner != nil
+      "#{winner} won the lightsaber"
+    else
+      'No winners for this lottery'
+    end
   end
 end
