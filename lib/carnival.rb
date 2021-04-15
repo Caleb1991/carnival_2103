@@ -61,7 +61,7 @@ class Carnival
     winner = draw_lottery_winner(ride)
 
     if winner != nil
-      "#{winner} won the lightsaber"
+      "#{winner} won the #{ride.name} ride"
     else
       'No winners for this lottery'
     end
