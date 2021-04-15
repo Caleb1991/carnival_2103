@@ -1,5 +1,4 @@
 require './lib/attendee'
-require './lib/ride'
 
 RSpec.describe Attendee do
 
