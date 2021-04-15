@@ -138,4 +138,33 @@ RSpec.describe Carnival do
       expect(jeffco_fair.ticket_lottery_contestants(bumper_cars)).to eq([bob, lando])
     end
   end
+
+  describe '#draw_lottery_winner' do
+    it 'randomly draws a winner for lottery' do
+      jeffco_fair = Carnival.new('Jefferson County Fair')
+      bumper_cars = Ride.new({name: 'Bumper Cars', cost: 10})
+      ferris_wheel = Ride.new({name: 'Ferris Wheel', cost: 0})
+      scrambler = Ride.new({name: 'Scrambler', cost: 15})
+      bob = Attendee.new('Bob', 0)
+      sally = Attendee.new('Sally', 20)
+      lando = Attendee.new('Lando', 5)
+      luke = Attendee.new('Luke', 10)
+
+      jeffco_fair.add_ride(bumper_cars)
+      jeffco_fair.add_ride(ferris_wheel)
+      jeffco_fair.add_ride(scrambler)
+      jeffco_fair.admit(bob)
+      jeffco_fair.admit(sally)
+      jeffco_fair.admit(lando)
+      jeffco_fair.admit(luke)
+      bob.add_interest('Ferris Wheel')
+      bob.add_interest('Bumper Cars')
+      sally.add_interest('Bumper Cars')
+      lando.add_interest('Bumper Cars')
+      luke.add_interest('Scrambler')
+
+      expect(jeffco_fair.draw_lottery_winner(scrambler)).to eq('Luke')
+      #this does not prove a random sample is being taken, will need ot refactor
+    end
+  end
 end
