@@ -26,4 +26,23 @@ class Carnival
   def admit(attendee)
     @attendees << attendee
   end
+
+  def attendees_by_ride_interest
+    hash = {}
+
+    @rides.each do |ride|
+      hash[ride] = []
+    end
+
+    @rides.each do |ride|
+      @attendees.each do |attendee|
+        if recommend_rides(attendee).include?(ride)
+        hash[ride] << attendee
+        end
+      end
+    end
+    hash
+  end
+
+
 end
