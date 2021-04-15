@@ -25,7 +25,7 @@ RSpec.describe Attendee do
     it 'has no interests by default' do
       attendee = Attendee.new('Bob', 20)
 
-      expet(attendee.interests).to eq([])
+      expect(attendee.interests).to eq([])
     end
   end
 end
