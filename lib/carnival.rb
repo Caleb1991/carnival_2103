@@ -49,4 +49,9 @@ class Carnival
       recommend_rides(attendee).include?(ride) && attendee.spending_money < ride.cost
     end
   end
+
+  def draw_lottery_winner(ride)
+    winner = ticket_lottery_contestants(ride).sample
+    winner.name
+  end
 end
